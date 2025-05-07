@@ -1,98 +1,174 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fiszki</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #2ee9e5;
-      margin: 0;
-      padding: 20px;
-    }
+<!DOCTYPE html>  <html lang="pl">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Fiszki</title>  
+  <style>  
+    body {  
+      font-family: sans-serif;  
+      background: #2ee9e5;  
+      margin: 0;  
+      padding: 20px;  
+    }  h1 {  
+  text-align: center;  
+}  
 
-    h1 {
-      text-align: center;
-    }
+.flashcards {  
+  display: grid;  
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  
+  gap: 20px;  
+  max-width: 1000px;  
+  margin: 0 auto;  
+}  
 
-    .flashcards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+.card {  
+  background: mediumseagreen;  
+  border-radius: 10px;  
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);  
+  padding: 20px;  
+  cursor: pointer;  
+  transition: transform 0.3s;  
+  text-align: center;  
+  color: wheat        
+}  
+    
 
-    .card {
-      background: mediumseagreen; /* Początkowy kolor */
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      cursor: pointer;
-      transition: transform 0.3s, background-color 0.3s; /* Dodajemy przejście dla tła */
-      text-align: center;
-      color: wheat;      
-    }
+.card:hover {  
+  transform: scale(1.05);  
+background: #f4b0e6;
+}  
 
-    .card:hover {
-      transform: scale(1.05);
-      background: #0e9fd5; /* Kolor po najechaniu */
-    }
+.card.flipped {  
+  background: #2e58e9;  
+}  
 
-    .card.flipped {
-      background: #2e58e9;
-    }
+.front, .back {  
+  display: none;  
+}  
 
-    .front, .back {
-      display: none;
-    }
+.card .front {  
+  display: block;  
+}  
 
-    .card .front {
-      display: block;
-    }
+.card.flipped .front {  
+  display: none;  
+}  
 
-    .card.flipped .front {
-      display: none;
-    }
+.card.flipped .back {  
+  display: block;  
+}
 
-    .card.flipped .back {
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <h1>Jeszcze to i wakajki</h1>
-  <div class="flashcards">
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="front">Jak możemy chronić przyrodę?</div>
-      <div class="back">Możemy chronić ją poprzez:Niezaśmiecanie środowiska, używanie nieszkodzące życiu wodnemu kremy SPF, Niemarnowanie zasobów tj. woda, Niewycinanie drzew, Korzystanie z OzE</div>
-    </div>
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="front">Omów budowę i funkcje układu <strong>pokarmowego</strong></div>
-      <div class="back">
-        <strong>Funkcja</strong> - Umożliwia przyjmowanie i przemianę pokarmu. <br>
-        <strong>Budowa</strong>: Układ pokarmowy dzieli się na:<br>
-        • Przewód pokarmowy – jama ustna, gardło, przełyk, żołądek, jelito cienkie, jelito grube<br>
-        • Gruczoły trawienne – ślinianki, wątroba, trzustka
-      </div>
-    </div>
-    <!-- Pozostałe karty -->
-  </div>
-
-  <audio id="clickSound" src="clicksound.wav" preload="auto"></audio>
-
-<script>
-  const clickSound = document.getElementById("clickSound");
-
-  document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-      clickSound.currentTime = 0; // resetuj, jeśli ktoś szybko klika
-      clickSound.play();
-    });
-  });
-</script>
-
-</body>
-</html>
-
+  </style>  
+</head>  
+<body>  
+  <h1>Jeszcze to i wakajki</h1>  
+  <div class="flashcards">  
+    <div class="card" onclick="this.classList.toggle('flipped')">  
+      <div class="front">Jak możemy chronić przyrodę?</div>  
+      <div class="back">Możemy chronić ją poprzez:Niezaśmiecanie środowiska, używanie nieszkodzące życiu wodnemu kremy SPF, Niemarnowanie zasobów tj. woda, Niewycinanie drzew, Korzystanie z OzE</div>  
+    </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">  
+      <div class="front">Omów budowę i funkcje układu <strong>pokarmowego</strong></div>  
+     <div class="back">  
+    <strong>Funkcja</strong> - Umożliwia przyjmowanie i przemianę pokarmu. <br>  
+    <strong>Budowa</strong>: Układ pokarmowy dzieli się na:<br>  
+    • Przewód pokarmowy – jama ustna, gardło, przełyk, żołądek, jelito cienkie, jelito grube<br>  
+    • Gruczoły trawienne – ślinianki, wątroba, trzustka</div>  
+     </div>     
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Wymień przyrządy i pomoce przyrodnika</div>   
+       <div class="back">Aparat, Mapa, Lornetka, Taśma do mierzenia, Lupa, Kompas, Mikroskop</div>      
+    </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front"> Wymień czynności życiowe organizmów</div>  
+        <div class="back">Organizmy: ruszają się, wydalają, odżywiają się, rosną, rozmnażają się i oddychają</div>  
+      </div>  
+        <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Czym jest łańcuch pokarmowy?</div>  
+        <div class="back">Jest to szereg organizmów, w którym każdy kolejny organizm jest zjadany przez następny.</div>    
+      </div>  
+ <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Porównaj warunki życia w wodzie i na lądzie</div>  
+     <div class="back"> <strong>Opór środowiska:</strong><br>  
+    • Woda stawia większy opór – trudniejsze poruszanie<br>  
+    • Powietrze ma mniejszy opór – łatwiejsze poruszanie<br><br>  
+    <strong>Zmiany temperatury:</strong><br>  
+    • Woda – mniejsze i wolniejsze zmiany<br>  
+    • Ląd – duże wahania (dzień/noc, pory roku)<br><br>  
+    <strong>Dostępność światła:</strong><br>  
+    • Woda – światło tylko do pewnej głębokości<br>  
+    • Ląd – światło łatwo dostępne<br><br>  
+    <strong>Dostępność wody:</strong><br>  
+    • Woda – wszędzie<br>  
+    • Ląd – trzeba ją zdobywać i oszczędzać<br><br>  
+    <strong>Zawartość tlenu:</strong><br>  
+    • Woda – mniej tlenu, trudniejsze oddychanie<br>  
+    • Ląd – więcej tlenu, łatwiejsze oddychanie</div>  
+     </div>  
+      <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Omów budowę i funkcje układu <strong>krwionośnego</strong></div>  
+    <div class="back"><strong>Funkcje</strong>: Dostarcza składniki pokarmowe i tlen do komórek, odprowadzanie z nich substancji zbędnych i szkodliwych tj. dwutlenek węgla, utrzymywanie stałej temperatury ciała<br><strong>Budowa</strong>: Serce, Tętnice, Żyły, Naczynia włosowate<br></div>   
+   </div>  
+          <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Omów budowę i funkcje układu <strong>oddechowego</strong></div>        
+    <div class="back"><strong>Funkcje</strong>: Odpowiada za dostarczanie do organizmu tlenu i usuwaniu dwutlenku węgla<br><strong>Budowa</strong>: Jama nosowa, Gardło, Krtań, Tchawica, Oskrzela i Płuca<br></div>  
+        </div>    
+       <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Omów budowę i funkcje układu <strong>ruchu</strong> oraz <strong>nerwowego</strong></div>   
+      <div class="back"><strong>Układ ruchu</strong><br><strong>Budowa:</strong> Szkielet i mięśnie szkieletowe<br><strong>Funkcje: </strong>Ochrona narządów wewnętrznych, umożliwianie poruszania się<br><strong>Układ nerwowy</strong><br><strong>Budowa:</strong>Mózg, Rdzeń kregowy, Nerwy<br><strong>Funkcje:</strong> Analizowanie informacji z narządów zmysłów i umożliwianie reakcji organizmu<br></div>  
+           </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Omów budowę i funkcje układu <strong>rozrodczego</strong></div>  
+     <div class="back"><strong>Kobieta:</strong><br><strong>Budowa:</strong> Jajniki, Jajowody, Macica, Pochwa<br><strong>Funkcje:</strong>Wytwarzanie komórek jajowych oraz umożliwianie rozwoju nowego organizmu<br><strong>Mężczyzna:</strong><br><strong>Budowa:</strong>Jądra, Worek mosznowy, Nasieniowody, Cewka moczowa, Prącie<br><strong>Funkcje:</strong> Wytwarzanie plemników i wprowadzanie ich do organizmu kobiety<br></div>  
+    </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Zdefiniuj czym jest <strong>pagórek, wzgórze, góry, doliny, kotliny, równiny</strong>.</div>  
+      <div class="back"><strong>pagórki</strong> - wzniesienia, które mają do 50 m wysokości.<br><strong>wzgórza</strong> - wzniesienia, mające pomiędzy 50 m, a 300 m wysokości.<br><strong>góry</strong> - wzniesienia, o wysokości przekraczającej 300 m.<br><strong>doliny</strong> - podłużne zagłębienia terenu, w których często płyną rzeki.<br><strong>kotliny</strong> - zagłębienia terenu otoczone ze wszystkich stron wzniesieniami. Oglądane z góry mają najczęściej kształt zbliżony do okrągłego.<br><strong>równiny</strong> - obszary na których trudno o wyraźne wzniesienia czy zagłębienia.<br></div>    
+        </div>  
+     <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Zdefiniuj czym jest <strong>gleba </strong> i <strong>próchnica</strong></div>  
+      <div class="back"><strong>Próchnica</strong> - wierzchnia i najważniejsza warstwa gleby, zawierająca składniki niezbędne do życia roślin.<br><strong>Gleba</strong> - warstwa wierzchnia ziemi, na której rosną rośliny.<br></div>  
+         </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Wymień <strong>składniki przyrody</strong></div>  
+     <div class="back">Składniki przyrody dzielą się na: <br><strong>nieożywione</strong> ,jak skały, Słońce, woda czy powietrze i <br><strong>ożywione</strong> czyli rośliny, zwierzęta. Ogólnie to wszystko to możemy nazwać "organizmami"</div>  
+    </div>      
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Wymień <strong>kierunki główne</strong> i <strong>pośrednie</strong> oraz odpowiadające im skróty</div>  
+    <div class="back"><strong>Kierunki główne:</strong>Północ (N po ang., płn. po pol.), Południe (S po ang., płd. po pol.), Wschód (E po ang., wsch. po pol.), Zachód (W po ang., zach. po pol.)<br><strong>Kierunki pośrednie:</strong> północny wschód (NE), południowy wschód (SE), północny zachód (NW), południowy zachód (SW)<br></div>    
+        </div>  
+     <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Wymień <strong>stany skupienia</strong> oraz ich cechy charakterystyczne</div>  
+     <div class="back"><strong>Ciecze:</strong> Nie mają własnego kształtu, mają stałą objętość<br><strong>Gazy:</strong> Nie mają stałego kształtu, ani objętości - rozprzestrzeniają się wszędzie gdzie może.<br><strong>Ciała stałe:</strong>mają stały kształt i objętość<br></div>    
+     </div>   
+     <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Jak możemy poznawać przyrodę?</div>  
+      <div class="back">Przyrodę  możemy poznawać dzięki pięciu głównym zmysłom.</div>  
+     </div>      
+     <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Wymień zasady <strong>zdrowego stylu życia</strong></div>  
+      <div class="back">Prawidłowe odżywianie, systematyczne ćwiczenia fizyczne, odpowiednia ilość snu w ciągu doby, utrzymywanie siebie i otoczenia w czystości, unikanie zachowań doprowadzających do rozwoju uzależnień. </div> </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Wymień choroby zakaźne i pasożytnicze. Ich objawy oraz jak się można nimi zarazić</div>  
+      <div class="back"><strong>Grypa</strong> - objawy: gorączka, kaszel, ból głowy i mięśni. Zarażenie: wdychanie powietrza z cząsteczkami wirusów.<br><strong>Angina</strong> - objawy: gorączka, ból gardła uniemożliwiający przełykanie. Zarażenie: wdychanie powietrza z cząsteczkami bakterii<br><strong>Borelioza</strong> - objawy: bóle stawów, zaburzenie pracy serca i układu nerwowego. Zarażenie: ugryzienie przez kleszcza którego ślina zawiera komórki bakterii.<br><strong>Tężec</strong> - objawy: bóle głowy, skurcze mięśni, drgawki. Zarażenie: zanieczyszczenie rany glebą, która zawiera komórki bakterii<br><strong>Salmonelloza</strong> - objawy: mdłości, wymioty, bóle brzucha i biegunka. Zarażenie: picie lub jedzenie żywności w której są komórki bakterii<br><strong>Tasiemczyca</strong> - objawy: mdłości, bóle brzucha, chudnięcie, osłabienie. Zarażenie: jedzenie niedogotowanego mięsa, które zawiera larwy tasiemca<br></div>  
+    </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Omów jak postępować w razie <strong>ukąszenia, użądlenia, zatrucia</strong></div>  
+         <div class="back">W razie ukąszenia i użądlenia należy dać na ukąszone miejsce <strong>zimny okład</strong> aby zmniejszyć dolegliwości, a jak człowiek umiera to dać krople żołądkowe (tak naprawdę to wezwać karetkę).<br>W przypadku <strong>zatrucia</strong> grzybami należy jak najszybciej spowodować wymioty, wezwać lekarza, a zatrutą potrawę zachować do badań w laboratorium.<br></div>  
+    </div>  
+    <div class="card" onclick="this.classList.toggle('flipped')">    
+        <div class="front">Czym jest <strong>uzależnienie</strong>?</div>  
+         <div class="back"><strong>Uzależnienie</strong> to niemożliwe do opanowania pragnienie ponownego zażycia określonej substancji</div>  
+    </div>  
+      <audio id="clickSound" src="clicksound.wav" preload="auto"></audio>  <script>  
+  const clickSound = document.getElementById("clickSound");  
+  
+  document.querySelectorAll(".card").forEach(card => {  
+    card.addEventListener("click", () => {  
+      clickSound.currentTime = 0; // resetuj, jeśli ktoś szybko klika  
+      clickSound.play();  
+    });  
+  });  
+</script>  </body>  
+  </html>
+  
